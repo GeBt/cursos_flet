@@ -33,6 +33,9 @@ def main(page: ft.Page):
         page_title="CRUD de Ítems",
         fields=FIELDS_ITEMS
     )
+    app_crud.page = page
+    app_crud.cargar_datos_iniciales()
+    page.add(app_crud.build())
     
     # Opción 2: (Descomenta esta y comenta la Opción 1 para probar)
     # app_crud = CrudApp(
@@ -40,7 +43,7 @@ def main(page: ft.Page):
     #     fields=FIELDS_CLIENTES
     # )
 
-    page.add(app_crud)
+
 
 # --- 4. Ejecuta la app ---
 if __name__ == "__main__":

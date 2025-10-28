@@ -1,16 +1,9 @@
 import flet as ft
-import inspect # <-- 1. AÑADE ESTA LÍNEA
 import itertools
 from typing import List, Dict, Any
 
-# --- 2. AÑADE ESTAS LÍNEAS DE DEBUG ---
-print("--- INICIO DE DEBUG ---")
-print(f"Versión de Flet detectada: {ft.__version__}")
-print(f"Ruta del módulo 'flet' importado: {inspect.getfile(ft)}")
-print("--- FIN DE DEBUG ---")
-# --- FIN DE DEBUG ---
 
-class CrudApp(ft.UserControl):
+class CrudApp:
     """
     Un componente CRUD genérico y reutilizable para Flet.
 
@@ -20,7 +13,7 @@ class CrudApp(ft.UserControl):
     """
     
     def __init__(self, page_title: str, fields: List[Dict[str, Any]]):
-        super().__init__(expand=True)
+  
         
         # --- 1. Configuración y Estado ---
         self.page_title = page_title
@@ -97,31 +90,17 @@ class CrudApp(ft.UserControl):
         )
         
     def build(self):
-        """
-        Construye la interfaz visual del componente.
-        Este método es llamado por Flet.
-        """
-        # Establecemos el título de la página cuando se construye
-        if self.page: # Asegurarse que la página existe
-            self.page.title = self.page_title
-        
-        tabla_container = ft.Column(
-            controls=[self.datatable],
-            scroll=ft.ScrollMode.ADAPTIVE,
-            expand=True
-        )
-        
-        # Retornamos el layout completo del UserControl
         return ft.Column(
             controls=[
                 self.search_bar,
                 self.add_button,
                 ft.Divider(),
-                tabla_container
+                ft.Column(controls=[self.datatable], scroll=ft.ScrollMode.ADAPTIVE, expand=True)
             ],
             expand=True
         )
-        
+
+
     # --- 3. Lógica y Handlers (Métodos de la clase) ---
 
     def did_mount(self):
