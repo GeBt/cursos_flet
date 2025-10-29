@@ -3,7 +3,7 @@ import flet as ft
 def main(page: ft.Page):
     page.title = "CRUD con DataTable y Limpiar Búsqueda"
     
-    page.window.width = 400
+    page.window.width = 800
     page.window.height = 600
     page.update()
 

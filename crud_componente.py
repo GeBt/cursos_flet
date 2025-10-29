@@ -111,7 +111,7 @@ class CrudApp:
         # Asignar page.title aquí es más seguro
         self.page.title = self.page_title
         self.cargar_datos_iniciales()
-        self.update()
+        self.page.update()
 
     def cargar_datos_iniciales(self):
         """Crea algunos datos de ejemplo."""
@@ -145,7 +145,7 @@ class CrudApp:
             self.datatable.rows.remove(row_a_eliminar)
             print(f"Ítem ID={row_a_eliminar.data} eliminado")
         self.page.close(self.modal_dialog)
-        self.update() # Actualiza el UserControl
+        self.page.update() # Actualiza el UserControl
 
     def guardar_y_cerrar(self, e):
         current_filter = self.search_bar.value.lower()
@@ -202,7 +202,7 @@ class CrudApp:
             print(f"Ítem ID={new_id} agregado")
         
         self.page.close(self.modal_dialog)
-        self.update() # Actualiza el UserControl
+        self.page.update() # Actualiza el UserControl
 
     def cerrar_dialogo(self, e):
         self.page.close(self.modal_dialog)
@@ -217,13 +217,13 @@ class CrudApp:
                 search_text_combined += row.cells[i].content.value.lower()
                 
             row.visible = search_text in search_text_combined
-        self.update()
+        self.page.update()
 
     def limpiar_busqueda(self, e):
         self.search_bar.value = ""
         for row in self.datatable.rows:
             row.visible = True
-        self.update()
+        self.page.update()
 
     def abrir_dialogo_editar(self, e):
         row_a_editar = e.control.data

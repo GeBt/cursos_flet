@@ -23,8 +23,8 @@ FIELDS_CLIENTES = [
 # --- 3. Define tu función main ---
 def main(page: ft.Page):
     
-    page.window.width = 500
-    page.window.height = 700
+    page.window.width = 800
+    page.window.height = 600
     
     # --- Elige qué CRUD quieres mostrar ---
     
@@ -36,14 +36,6 @@ def main(page: ft.Page):
     app_crud.page = page
     app_crud.cargar_datos_iniciales()
     page.add(app_crud.build())
-    
-    # Opción 2: (Descomenta esta y comenta la Opción 1 para probar)
-    # app_crud = CrudApp(
-    #     page_title="Gestión de Clientes",
-    #     fields=FIELDS_CLIENTES
-    # )
-
-
 
 # --- 4. Ejecuta la app ---
 if __name__ == "__main__":
